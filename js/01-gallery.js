@@ -16,20 +16,20 @@ const render = galleryItems.reduce(
   </a></div>`,
   ''
 );
-console.log(render);
+// console.log(render);
 
 const gallery = document.querySelector('.gallery');
 gallery.insertAdjacentHTML('afterbegin', render);
 gallery.addEventListener('click', handleImgClick);
 
-const instance = basicLightbox.create(`<img class="gallery__image">`);
+// const instance = basicLightbox.create(`<img class="gallery__image">`);
 
 function handleImgClick(event) {
   event.preventDefault();
   //   if (event.target === event.currentTarget) return;
   if (!event.target.classList.contains('gallery__image')) return;
-  //   const instance = basicLightbox.create(`<img src="${event.target.dataset.source}">`);
-  instance.element().querySelector('.gallery__image').src = event.target.dataset.source;
+  const instance = basicLightbox.create(`<img src="${event.target.dataset.source}">`);
+  // instance.element().querySelector('.gallery__image').src = event.target.dataset.source;
   instance.show();
 
   document.addEventListener('keydown', handleDownEscape);
@@ -37,27 +37,6 @@ function handleImgClick(event) {
     if (event.code !== 'Escape') return;
     if (event.code === 'Escape') instance.close();
     document.removeEventListener('keydown', handleDownEscape);
-    console.log(event.code);
+    // console.log(event.code);
   }
 }
-// -------------------------------------------------------------------------
-// document.addEventListener('keydown', handleDownEscape);
-
-// function handleDownEscape(event) {
-//   if (event.code !== 'Escape') return;
-//   if (event.code === 'Escape') instance.close();
-//   document.removeEventListener('keydown', handleDownEscape);
-//   console.log(event.code);
-// }
-// ---------------------------------------------------------------------------
-
-// instance.element().querySelector('.gallery__image').addEventListener('keydown', handleDownEscape);
-// console.log(instance.element().querySelector('.gallery__image').addEventListener('keydown'));
-
-//   instance
-//     .element()
-//     .querySelector('.gallery__image')
-//     .removeEventListener('keydown', handleDownEscape);
-//   //   document.removeEventListener('keydown', handleDownEscape);
-//   console.log(event.code);
-// }
